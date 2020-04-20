@@ -8,5 +8,5 @@
 The above tweet, by [@NoraDotCodes][nora.codes], is what started the [P26N30 organisation][p26n30] and this repository in particular. 
 
 [corewars]: https://corewars.org
-[nora.code]: https://twitter.com/NoraDotCodes
+[nora.codes]: https://twitter.com/NoraDotCodes
 [p26n30]: https://github.com/p26n30
