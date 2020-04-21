@@ -1,5 +1,8 @@
 //! Redcode is the assembly language for MARS
+//!
+//! An [introduction](http://vyznev.net/corewar/guide.html) to Redcode and Core Wars in general can be found on the Core Wars [homepage](https://corewars.org/information.html)
 
+/// Each Redcode instruction contains three parts: the OpCode itself, the source address (a.k.a. the A-field) and the destination address (the B-field).
 pub enum Instruction {
     /// data kills the process
     DAT,
