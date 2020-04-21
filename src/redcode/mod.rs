@@ -2,11 +2,17 @@
 //!
 //! An [introduction](http://vyznev.net/corewar/guide.html) to Redcode and Core Wars in general can be found on the Core Wars [homepage](https://corewars.org/information.html)
 
-/// Each Redcode instruction contains three parts: the OpCode itself, the source address (a.k.a. the A-field) and the destination address (the B-field).
+/// Each Redcode instruction contains the following parts:
+///
+/// * the OpCode itself
+/// * the source address (a.k.a. the A-field)
+/// * the destination address (the B-field)
+/// * a modifier
 pub struct Instruction {
     op_code: Opcode,
     source: Address,
     destination: Address,
+    modifier: Modifier,
 }
 
 /// Each Instruction can perform on of these operations.
@@ -74,4 +80,22 @@ pub enum Mode {
     AFieldIndirectWithPostincrement,
     /// signified by `>`.
     BFieldIndirectWithPostincrement,
+}
+
+/// A modifier is a suffix that is added to the instruction to specify which parts of the source and the destination it will affect.
+pub enum Modifier {
+    /// moves the A-field of the source into the A-field of the destination
+    A,
+    /// moves the B-field of the source into the B-field of the destination
+    B,
+    /// moves the A-field of the source into the B-field of the destination
+    AB,
+    /// moves the B-field of the source into the A-field of the destination
+    BA,
+    /// moves both fields of the source into the same fields in the destination
+    F,
+    /// moves both fields of the source into the opposite fields in the destination
+    X,
+    /// moves the whole source instruction into the destination
+    I,
 }
