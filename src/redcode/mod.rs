@@ -3,8 +3,15 @@
 //! An [introduction](http://vyznev.net/corewar/guide.html) to Redcode and Core Wars in general can be found on the Core Wars [homepage](https://corewars.org/information.html)
 
 /// Each Redcode instruction contains three parts: the OpCode itself, the source address (a.k.a. the A-field) and the destination address (the B-field).
-pub enum Instruction {
-    /// data kills the process
+pub struct Instruction {
+    op_code: Opcode,
+    source: Address,
+    destination: Address,
+}
+
+/// Each Instruction can perform on of these operations.
+pub enum Opcode {
+    /// data; kills the process
     DAT,
     /// move; copies data from one address to another
     MOV,
@@ -42,4 +49,29 @@ pub enum Instruction {
     STP,
     /// no operation; does nothing
     NOP,
+}
+
+struct Address {
+    value: u16,
+    mode: Mode,
+}
+
+/// The address mode determines how the address value is used.
+pub enum Mode {
+    /// signified by `#`.
+    Immediate,
+    /// signified by `$`, which is optional.
+    Direct,
+    /// signified by `*`.
+    AFieldIndirect,
+    /// signified by `@`.
+    BFieldIndirect,
+    /// signified by `{`.
+    AFieldIndirectWithPredecrement,
+    /// signified by `<`.
+    BFieldIndirectWithPredecrement,
+    /// signified by `}`.
+    AFieldIndirectWithPostincrement,
+    /// signified by `>`.
+    BFieldIndirectWithPostincrement,
 }
